@@ -2,7 +2,7 @@ import { PaginaExploracao } from "./mainGabriela";
 import { Escolha } from "./mainGabriela";
 import { jogador } from "./personagens";
 import { mochilaDoJogador } from "./mainGabriela";
-import { Batalha } from "./batalhas";
+
 
 import promptSync = require("prompt-sync");
 const prompt = promptSync();
@@ -311,8 +311,7 @@ async function Menu() {
         console.log("╠══════════════════════════════════════╣");
         console.log("║                                      ║");
         console.log("║  [1] História                        ║");
-        console.log("║  [2] Batalha                         ║");
-        console.log("║  [3] Sair                            ║");
+        console.log("║  [2] Sair                            ║");
         console.log("║                                      ║");
         console.log("╚══════════════════════════════════════╝");
         opcao = Number(prompt("Escolha seu caminho: "));
@@ -330,14 +329,9 @@ async function Menu() {
                 // AGORA O MENU ESPERA A HISTÓRIA TERMINAR
                 await jogar(pagina1); 
                 break;
-  
-            case 2:
-                console.clear();2
-                Batalha()
-                await esperar(2000);
-                break;
     
-            case 3:
+    
+            case 2:
                 console.clear();
                 console.log("╔══════════════════════════════════════╗");
                 console.log("║         Obrigado por jogar!          ║");
