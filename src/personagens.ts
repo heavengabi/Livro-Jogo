@@ -16,7 +16,7 @@ interface Personagem {
 export class personagem implements Personagem{
     constructor(
         public nome: string,
-        public vida: number,
+        private vida: number,
         public poder:string,
         descricaoPersonagem:string,
         public item: inventario[] = [],
@@ -78,6 +78,7 @@ mochilaDoJogador.novoItem(arcoCelestial)
 
 mochilaDoJogador.listaritens()
 mochilaDoJogador.usarItem(0)
+
 
 
 mostrarPersonagens()
