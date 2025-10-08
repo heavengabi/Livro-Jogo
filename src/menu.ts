@@ -8,11 +8,11 @@ import promptSync = require("prompt-sync");
 const prompt = promptSync();
 
 
-// pra ver se tem aliados (não utilizado nesta versão da história, mas mantido)
+
 let temAliado = false; 
 
 
-// Páginas da História Corrigida (1 a 20) + Páginas de Final (21, 22, 23)
+
 
 const pagina1 = new PaginaExploracao(
     1,
@@ -244,14 +244,14 @@ export function esperar(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// --- VERSÃO ÚNICA E CORRIGIDA DA FUNÇÃO 'jogar' ---
+
 async function jogar(pagina: PaginaExploracao): Promise<void> {
     console.clear();
     pagina.verPaginaAtual()
     console.log("\n📖 " + pagina.nome);
     console.log(pagina.descricao);
 
-    // Verifica se a página atual é um final de jogo
+  
     if (pagina.escolhas.length === 0) {
         console.clear();
         console.log("╔══════════════════════════════════════╗");
@@ -263,7 +263,7 @@ async function jogar(pagina: PaginaExploracao): Promise<void> {
         
         console.log("\nVoltando ao menu em 10 segundos...");
         await esperar(10000);
-        return; // Encerra a função
+        return; 
     }
 
     console.log("\nOpções:");
@@ -280,24 +280,24 @@ async function jogar(pagina: PaginaExploracao): Promise<void> {
     if (escolhida) {
         const proxima = paginas[escolhida.paginaAlvo];
        
-        // Lógica para ganhar um aliado (mantida, mas não crucial para esta história)
-        if (proxima && (proxima.id === 7)) { //Exemplo: Ganha aliado ao encontrar Aragorn
+      
+        if (proxima && (proxima.id === 7)) { 
             console.log("\n🤝 Você agora tem um aliado em sua jornada!");
             temAliado = true;
             await esperar(2000);
         }
 
         if (proxima) {
-            await jogar(proxima); // Usa await na chamada recursiva
+            await jogar(proxima); 
         
         }
     } else {
         console.log("\nOpção inválida! Tente novamente.");
         await esperar(2000);
-        await jogar(pagina); // Repete a mesma página
+        await jogar(pagina);
     } 
 }
-// --- MENU PRINCIPAL CORRIGIDO ---
+
 async function Menu() {
     let opcao = 0;
 
@@ -323,10 +323,10 @@ async function Menu() {
                 console.log("║        Iniciando a Aventura...       ║");
                 console.log("╚══════════════════════════════════════╝");
                 
-                temAliado = false; // Reseta a variável de aliado para um novo jogo
+                temAliado = false; 
                 await esperar(2000);
                 
-                // AGORA O MENU ESPERA A HISTÓRIA TERMINAR
+               
                 await jogar(pagina1); 
                 break;
     
@@ -336,7 +336,7 @@ async function Menu() {
                 console.log("╔══════════════════════════════════════╗");
                 console.log("║         Obrigado por jogar!          ║");
                 console.log("╚══════════════════════════════════════╝");
-                await esperar(2000); // Pausa antes de sair
+                await esperar(2000); 
                 break;
             default:
                 console.clear();
@@ -346,5 +346,6 @@ async function Menu() {
     }
 }
 
-// Inicia o jogo
+
 Menu();
+
